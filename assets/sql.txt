@@ -1,0 +1,15 @@
+select artist.artist_name as ARTIST, artist.num_albums as ALBUMS from ARTIST artist 
+group by artist.artist_name, artist.num_albums
+having artist.num_albums > 5
+order by artist.num_albums desc;
+
+select album.album_name as ALBUM, artist.artist_name as ARTIST, album.ALBUM_YEAR as YEAR
+from ALBUM album join ARTIST artist on album.Artist_ID = artist.Artist_ID
+group by album.album_name, artist.artist_name, album.album_year
+having album.album_year > 1999
+order by album.album_year asc;
+
+select avg(album.ALBUM_ID) as Avg_Score
+from ALBUM album join ARTIST artist on album.Artist_ID = artist.Artist_ID
+where artist.artist_id = (select artist_ID from ARTIST artist where artist.artist_name = 'The Beatles');
+
